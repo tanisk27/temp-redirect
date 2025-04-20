@@ -80,19 +80,16 @@
       <div></div>
     </div>
     <div class="message">
-      We’ve switched domains! Redirecting you from Petrova.io to <strong>Petrova.ai</strong>…
+      We've switched domains! Redirecting you from Petrova.io to <strong>Petrova.ai</strong>…
     </div>    
 
     <script>
-      const target =
-        'https://petrova.ai' +
-        window.location.pathname +
-        window.location.search +
-        window.location.hash;
+      // Always redirect to the root of petrova.ai
+      const target = 'https://petrova.ai';
 
       setTimeout(() => {
         window.location.replace(target);
-      }, 3000); // 2‑second pause
+      }, 3000); // 3-second pause
     </script>
   </body>
 </html>
