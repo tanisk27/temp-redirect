@@ -84,8 +84,21 @@
     </div>    
 
     <script>
-      // Always redirect to the root of petrova.ai
-      const target = 'https://petrova.ai';
+      const path = window.location.pathname;
+      let target;
+
+      // Check for app subdomain redirects
+      if (path.startsWith('/app/') || 
+          path.startsWith('/interview/') || 
+          path.startsWith('/careers/') || 
+          path.startsWith('/accounts/')) {
+        // Extract the path after the first slash
+        const subPath = path.substring(1);
+        target = `https://app.petrova.ai/${subPath}`;
+      } else {
+        // For all other paths, redirect to petrova.ai with the same path
+        target = 'https://petrova.ai' + path + window.location.search + window.location.hash;
+      }
 
       setTimeout(() => {
         window.location.replace(target);
