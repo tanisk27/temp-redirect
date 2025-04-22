@@ -85,6 +85,8 @@
 
     <script>
       const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
       let target;
 
       // Check for app subdomain redirects
@@ -94,15 +96,15 @@
           path.startsWith('/account/')) {
         // Extract the path after the first slash
         const subPath = path.substring(1);
-        target = `https://app.petrova.ai/${subPath}`;
+        target = `https://app.petrova.ai/${subPath}${search}${hash}`;
       } else {
         // For all other paths, redirect to petrova.ai with the same path
-        target = 'https://petrova.ai' + path + window.location.search + window.location.hash;
+        target = `https://petrova.ai${path}${search}${hash}`;
       }
 
       setTimeout(() => {
         window.location.replace(target);
-      }, 3000); // 3-second pause
+      }, 3000);
     </script>
   </body>
 </html>
