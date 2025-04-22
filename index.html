@@ -82,6 +82,29 @@
     <div class="message">
       We've switched domains! Redirecting you from Petrova.io to <strong>Petrova.ai</strong>…
     </div>    
+
+    <script>
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+      let target;
+
+      // Check for app subdomain redirects
+      if (path.startsWith('/app/') || 
+          path.startsWith('/interview/') || 
+          path.startsWith('/careers/') || 
+          path.startsWith('/account/')) {
+        // Extract the path after the first slash
+        const subPath = path.substring(1);
+        target = `https://app.petrova.ai/${subPath}${search}${hash}`;
+      } else {
+        // For all other paths, redirect to petrova.ai with the same path
+        target = `https://petrova.ai${path}${search}${hash}`;
+      }
+
+      window.location.replace(target);
+
+    </script>
   </body>
 </html>
 

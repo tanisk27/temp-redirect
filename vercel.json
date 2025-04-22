@@ -5,24 +5,8 @@
       "dest": "https://app.petrova.ai/api/$1"
     },
     {
-      "src": "/app/(.*)",
-      "dest": "https://app.petrova.ai/app/$1"
-    },
-    {
-      "src": "/interview/(.*)",
-      "dest": "https://app.petrova.ai/interview/$1"
-    },
-    {
-      "src": "/careers/(.*)",
-      "dest": "https://app.petrova.ai/careers/$1"
-    },
-    {
-      "src": "/account/(.*)",
-      "dest": "https://app.petrova.ai/account/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "https://petrova.ai/$1"
+      "dest": "/index.html"
     }
   ]
 } 
