@@ -3,107 +3,273 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting…</title>
+    <title>Petrova.io → Petrova.ai Migration</title>
     <style>
       :root {
         --bg: #fef9f6;
         --primary: #ff7a00;
         --text: #333;
+        --card-bg: #ffffff;
+        --border: #e5e5e5;
+        --success: #22c55e;
       }
       *, *::before, *::after {
         box-sizing: border-box;
       }
       body {
         margin: 0;
-        padding: 0;
+        padding: 20px;
         background: var(--bg);
         color: var(--text);
         font-family: 'Segoe UI', sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        overflow: hidden;
+        line-height: 1.6;
+        min-height: 100vh;
       }
 
-      /* pulsing loader */
-      .loader {
-        position: relative;
-        width: 60px;
-        height: 60px;
-        margin-bottom: 1rem;
-      }
-      .loader div {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 6px solid var(--primary);
-        border-radius: 50%;
-        opacity: 0;
-        animation: pulse 1.5s ease-in-out infinite;
-      }
-      .loader div:nth-child(2) {
-        animation-delay: 0.75s;
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(0);
-          opacity: 0.7;
-        }
-        50% {
-          transform: scale(1);
-          opacity: 0.2;
-        }
-        100% {
-          transform: scale(1.5);
-          opacity: 0;
-        }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
       }
 
-      /* fade-in message */
-      .message {
-        font-size: 1rem;
-        opacity: 0;
-        animation: fadeIn 1s ease-out 0.5s forwards;
+      .header {
         text-align: center;
+        margin-bottom: 2rem;
       }
-      @keyframes fadeIn {
-        to { opacity: 1; }
+
+      .header h1 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        color: #666;
+        margin: 0;
+      }
+
+      .migration-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .url-mapping {
+        margin-bottom: 1.5rem;
+      }
+
+      .url-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .url-label {
+        font-weight: 600;
+        min-width: 100px;
+        color: var(--text);
+      }
+
+      .url-value {
+        font-family: 'Monaco', 'Consolas', monospace;
+        background: #e9ecef;
+        padding: 0.5rem;
+        border-radius: 4px;
+        word-break: break-all;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .arrow {
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .go-button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.2s;
+      }
+
+      .go-button:hover {
+        background: #e56600;
+      }
+
+      .examples {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .examples h3 {
+        margin-top: 0;
+        color: #1e40af;
+      }
+
+      .example-row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-family: 'Monaco', 'Consolas', monospace;
+        font-size: 0.9rem;
+      }
+
+      .example-old {
+        color: #dc2626;
+      }
+
+      .example-new {
+        color: var(--success);
+      }
+
+      .notice {
+        background: #fef3c7;
+        border: 1px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .notice strong {
+        color: #d97706;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+        
+        .url-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        
+        .example-row {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        
+        .arrow {
+          display: none;
+        }
       }
     </style>
   </head>
 
   <body>
-    <div class="loader">
-      <div></div>
-      <div></div>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 We've Moved to Petrova.ai!</h1>
+        <p>We've stopped automatic redirects. Please update your bookmarks and links.</p>
+      </div>
+
+      <div class="notice">
+        <strong>Important:</strong> We are no longer automatically redirecting from petrova.io to petrova.ai. 
+        Please manually navigate to the equivalent URL shown below and update your bookmarks.
+      </div>
+
+      <div class="migration-card">
+        <h2>Your URL Migration</h2>
+        <div class="url-mapping">
+          <div class="url-row">
+            <span class="url-label">Current URL:</span>
+            <span class="url-value" id="current-url">Loading...</span>
+          </div>
+          <div class="url-row">
+            <span class="url-label">New URL:</span>
+            <span class="url-value" id="new-url">Loading...</span>
+            <span class="arrow">→</span>
+            <a href="#" id="go-link" class="go-button">Go to New Site</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="examples">
+        <h3>URL Mapping Examples</h3>
+        <div class="example-row">
+          <span class="example-old">petrova.io</span>
+          <span class="arrow">→</span>
+          <span class="example-new">petrova.ai</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/about</span>
+          <span class="arrow">→</span>
+          <span class="example-new">petrova.ai/about</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/pricing</span>
+          <span class="arrow">→</span>
+          <span class="example-new">petrova.ai/pricing</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/app/dashboard</span>
+          <span class="arrow">→</span>
+          <span class="example-new">app.petrova.ai/app/dashboard</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/interview/123</span>
+          <span class="arrow">→</span>
+          <span class="example-new">app.petrova.ai/interview/123</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/careers</span>
+          <span class="arrow">→</span>
+          <span class="example-new">app.petrova.ai/careers</span>
+        </div>
+        <div class="example-row">
+          <span class="example-old">petrova.io/account/settings</span>
+          <span class="arrow">→</span>
+          <span class="example-new">app.petrova.ai/account/settings</span>
+        </div>
+      </div>
     </div>
-    <div class="message">
-      We've switched domains! Redirecting you from Petrova.io to <strong>Petrova.ai</strong>…
-    </div>    
 
     <script>
+      // Get current URL components
       const path = window.location.pathname;
       const search = window.location.search;
       const hash = window.location.hash;
-      let target;
-
-      // Check for app subdomain redirects
+      const currentUrl = window.location.href;
+      
+      // Calculate new URL based on the same logic as before
+      let newUrl;
       if (path.startsWith('/app/') || 
           path.startsWith('/interview/') || 
           path.startsWith('/careers/') || 
           path.startsWith('/account/')) {
         // Extract the path after the first slash
         const subPath = path.substring(1);
-        target = `https://app.petrova.ai/${subPath}${search}${hash}`;
+        newUrl = `https://app.petrova.ai/${subPath}${search}${hash}`;
       } else {
         // For all other paths, redirect to petrova.ai with the same path
-        target = `https://petrova.ai${path}${search}${hash}`;
+        newUrl = `https://petrova.ai${path}${search}${hash}`;
       }
 
-      window.location.replace(target);
-
+      // Update the page with the URLs
+      document.getElementById('current-url').textContent = currentUrl;
+      document.getElementById('new-url').textContent = newUrl;
+      document.getElementById('go-link').href = newUrl;
     </script>
   </body>
 </html>
